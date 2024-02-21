@@ -5,14 +5,13 @@
 Counter::Counter(QWidget *parent) : QMainWindow(parent), count(0)
 {
 
-    QPushButton* click = new QPushButton("Click", this);
+    QPushButton* click = new QPushButton("Click", this);    
+    connect(click, &QPushButton::clicked, this, &Counter::buttonClicked);
+    
     label = new QLabel(QString::number(count), this);
     QFont font = label->font();
     font.setPointSize(24);
     label->setFont(font);
-
-    connect(click, &QPushButton::clicked, this, &Counter::buttonClicked);
-
 
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(click);
